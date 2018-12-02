@@ -5,7 +5,7 @@ input = open("day1-input.txt", "r")
 
 lines = input.readlines()
 total = 0
-frequencies = [0]
+frequencies = {}
 
 def apply_freq(lines, total, frequencies):
     count = 0
@@ -14,9 +14,9 @@ def apply_freq(lines, total, frequencies):
         print(count)
         for number in lines:
             total += int(number.rstrip())
-            if total in frequencies:
+            if total in frequencies.keys():
                 print(total)
                 return()
-            frequencies.append(total)
+            frequencies[total] = 1
 
 apply_freq(lines, total, frequencies)
