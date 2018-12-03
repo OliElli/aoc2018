@@ -7,15 +7,14 @@ input = open("day3-input.txt", "r")
 lines = input.readlines()
 
 tilemap = []
-new = []
 count = 0
 
 # Initialise 1000 x 1000 array of zeroes
 for i in range (0, 1000):
+  new = []
   for j in range (0, 1000):
     new.append(0)
   tilemap.append(new)
-  new = []
 
 for line in lines:
   data = line.split(" ")
