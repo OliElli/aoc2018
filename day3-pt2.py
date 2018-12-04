@@ -1,7 +1,5 @@
 #! /usr/bin/env python
 
-from array import *
-
 input = open("day3-input.txt", "r")
 lines = input.readlines()
 
@@ -40,4 +38,4 @@ for line in lines:
 
   if (s.count(s[0]) == len(s)):
     if (s[0] == 1):
-      print(data[0][1:] + " " + str(s))
+      print(data[0][1:])
