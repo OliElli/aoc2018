@@ -15,7 +15,7 @@ for line in lines:
   date = line[6:11]
   time = line[12:17]
   
-  m = re.search(r'Guard (#[0-9]+) begins shift', line)
+  m = re.search(r'Guard #([0-9]+) begins shift', line)
   if m:
     guard_id = m.group(1)
     if not guard_id in sleeping.keys():
@@ -39,11 +39,15 @@ for line in lines:
     for x in range (start_time, end_time):
       sleeping_minutes[guard_id][x] += 1
 
-# Guard that sleeps the most:
-sleepy_guard = max(sleeping, key=lambda key: sleeping[key])
+peak_minute = {}
+guard_pb = {}
+for guard in sleeping_minutes:
+  s = [(k, sleeping_minutes[guard][k]) for k in sorted(sleeping_minutes[guard], key=sleeping_minutes[guard].get, reverse=True)]
+  peak_minute[guard] = s[0][0]
+  guard_pb[guard] = s[0][1]
 
-print("Sleepy guard: " + sleepy_guard)
-# Thanks internet:
-s = [(k, sleeping_minutes[sleepy_guard][k]) for k in sorted(sleeping_minutes[sleepy_guard], key=sleeping_minutes[sleepy_guard].get, reverse=True)]
-print("Sleepy minute: " + str(s[0][0]))
-print("Product: " + str(int(sleepy_guard[1:])*s[0][0]))
+s = [(k, guard_pb[k]) for k in sorted(guard_pb, key=guard_pb.get, reverse=True)]
+print("Guard: " + s[0][0])
+print("Minute: " + str(peak_minute[s[0][0]]))
+print("Product: " + str(peak_minute[s[0][0]]*int(s[0][0])))
+
