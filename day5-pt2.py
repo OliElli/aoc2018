@@ -1,10 +1,7 @@
 #! /usr/bin/env python
 
 import re
-import sys
 from string import ascii_lowercase
-
-sys.setrecursionlimit(2000000)
 
 input = open("day5-input.txt", "r")
 lines = input.readlines()

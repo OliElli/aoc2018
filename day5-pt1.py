@@ -1,9 +1,6 @@
 #! /usr/bin/env python
 
 import re
-import sys
-
-sys.setrecursionlimit(1000000)
 
 input = open("day5-input.txt", "r")
 lines = input.readlines()
