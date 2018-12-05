@@ -1,27 +1,27 @@
 #! /usr/bin/env python
 
 import re
+import sys
 
-input = open("test-input.txt", "r")
+sys.setrecursionlimit(150000)
+
+input = open("day5-input.txt", "r")
 lines = input.readlines()
-
-print(lines[0])
 
 def find_dupes(line): 
   i = 0
   char = ""
-  print(line)
+  output = ""
   for x in line:
     string = line
     if char.lower() == x.lower():
       if (char.islower() and x.isupper()) or (char.isupper() and x.islower()):
         output = str(string[:i-1] + string[i+1:])
-        # print(output + " " + str(i))
-        find_dupes(output)
+        string = find_dupes(output)
+        return(string)
     char = x
     i += 1
   return(string)
 
 result = find_dupes(lines[0])
-
 print(result)
