@@ -3,7 +3,7 @@
 import re
 import sys
 
-sys.setrecursionlimit(150000)
+sys.setrecursionlimit(1000000)
 
 input = open("day5-input.txt", "r")
 lines = input.readlines()
@@ -24,4 +24,4 @@ def find_dupes(line):
   return(string)
 
 result = find_dupes(lines[0])
-print(result)
+print(len(result))
